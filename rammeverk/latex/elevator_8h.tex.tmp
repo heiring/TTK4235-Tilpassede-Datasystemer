@@ -1,0 +1,122 @@
+\hypertarget{elevator_8h}{}\section{source/elevator.h File Reference}
+\label{elevator_8h}\index{source/elevator.\+h@{source/elevator.\+h}}
+
+
+Description of Elevator.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structt__floor}{t\+\_\+floor}
+\begin{DoxyCompactList}\small\item\em Contains the last floor and the next floor the elevator will visit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{elevator_8h_a9f34354b149588b399cf9448e20069be}{state}\hypertarget{elevator_8h_a9f34354b149588b399cf9448e20069be}{}\label{elevator_8h_a9f34354b149588b399cf9448e20069be}
+
+\begin{DoxyCompactList}\small\item\em Contains all the states the F\+SM can have. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \{ \\*
+{\bfseries I\+N\+IT} = 0, 
+{\bfseries I\+D\+LE} = 1, 
+{\bfseries M\+O\+VE} = 2, 
+{\bfseries W\+A\+IT} = 3, 
+\\*
+{\bfseries E\+M\+\_\+\+S\+T\+OP} = 4
+ \}\hypertarget{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{}\label{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}
+\begin{DoxyCompactList}\small\item\em Contains all the states the F\+SM can have. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{elevator_8h_a8aa67ee49a1d275aa51b0613b799c319}{emergency\+Stop} ()
+\begin{DoxyCompactList}\small\item\em Stops the elevator for as long as S\+T\+OP button is pressed, and an additional 3 seconds after release. \end{DoxyCompactList}\item 
+int \hyperlink{elevator_8h_a0165a5bcb8596e257d40f2691fd15fef}{get\+Current\+Floor} ()
+\begin{DoxyCompactList}\small\item\em Returns the elevators current floor. \end{DoxyCompactList}\item 
+void \hyperlink{elevator_8h_a421880cfef13dce25fd9ea88d0439a9d}{update\+Floor\+Indicator\+Lights} ()\hypertarget{elevator_8h_a421880cfef13dce25fd9ea88d0439a9d}{}\label{elevator_8h_a421880cfef13dce25fd9ea88d0439a9d}
+
+\begin{DoxyCompactList}\small\item\em Updates floor indicator lights, as well as t\+\_\+floor.\+last and t\+\_\+floor.\+next. \end{DoxyCompactList}\item 
+\hyperlink{elevator_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{elevator_8h_aec166bf6fecbefc027b9549f766b63bb}{determine\+Direction\+Or\+Wait} ()
+\begin{DoxyCompactList}\small\item\em Determines which direction the elevator needs to travel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structt__floor}{t\+\_\+floor} {\bfseries t\+\_\+floor}\hypertarget{elevator_8h_aa11f0ded82cc2cb209e4489981d766e6}{}\label{elevator_8h_aa11f0ded82cc2cb209e4489981d766e6}
+
+\item 
+int {\bfseries last\+Direction}\hypertarget{elevator_8h_a2055f8d01274f9ad120dda82da5c612e}{}\label{elevator_8h_a2055f8d01274f9ad120dda82da5c612e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Description of Elevator. 
+
+
+
+\subsection{Function Documentation}
+\index{elevator.\+h@{elevator.\+h}!determine\+Direction\+Or\+Wait@{determine\+Direction\+Or\+Wait}}
+\index{determine\+Direction\+Or\+Wait@{determine\+Direction\+Or\+Wait}!elevator.\+h@{elevator.\+h}}
+\subsubsection[{\texorpdfstring{determine\+Direction\+Or\+Wait()}{determineDirectionOrWait()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} determine\+Direction\+Or\+Wait (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{elevator_8h_aec166bf6fecbefc027b9549f766b63bb}{}\label{elevator_8h_aec166bf6fecbefc027b9549f766b63bb}
+
+
+Determines which direction the elevator needs to travel. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily M\+O\+VE} when the direction is either {\ttfamily D\+I\+R\+N\+\_\+\+UP} or {\ttfamily D\+I\+R\+N\+\_\+\+D\+O\+WN}, return {\ttfamily W\+A\+IT} when direction is {\ttfamily D\+I\+R\+N\+\_\+\+S\+T\+OP}.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+can also return {\ttfamily E\+M\+\_\+\+S\+T\+OP} if some unforeseen error occurs. 
+\end{DoxyWarning}
+
+
+Definition at line 73 of file elevator.\+c.
+
+\index{elevator.\+h@{elevator.\+h}!emergency\+Stop@{emergency\+Stop}}
+\index{emergency\+Stop@{emergency\+Stop}!elevator.\+h@{elevator.\+h}}
+\subsubsection[{\texorpdfstring{emergency\+Stop()}{emergencyStop()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} emergency\+Stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{elevator_8h_a8aa67ee49a1d275aa51b0613b799c319}{}\label{elevator_8h_a8aa67ee49a1d275aa51b0613b799c319}
+
+
+Stops the elevator for as long as S\+T\+OP button is pressed, and an additional 3 seconds after release. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily E\+M\+\_\+\+S\+T\+OP} if S\+T\+OP button is pressed down, or if there\textquotesingle{}s less than 3 seconds since the last S\+T\+OP button push. Else return {\ttfamily I\+D\+LE} 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+When I\+D\+LE is returned, last\+Direction = D\+I\+R\+N\+\_\+\+S\+T\+OP 
+\end{DoxyWarning}
+
+
+Definition at line 11 of file elevator.\+c.
+
+\index{elevator.\+h@{elevator.\+h}!get\+Current\+Floor@{get\+Current\+Floor}}
+\index{get\+Current\+Floor@{get\+Current\+Floor}!elevator.\+h@{elevator.\+h}}
+\subsubsection[{\texorpdfstring{get\+Current\+Floor()}{getCurrentFloor()}}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Current\+Floor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{elevator_8h_a0165a5bcb8596e257d40f2691fd15fef}{}\label{elevator_8h_a0165a5bcb8596e257d40f2691fd15fef}
+
+
+Returns the elevators current floor. 
+
+\begin{DoxyReturn}{Returns}
+-\/1 when not at any floor, otherwise return values in range \mbox{[}0, 3\mbox{]} 
+\end{DoxyReturn}
+
+
+Definition at line 32 of file elevator.\+c.
+
